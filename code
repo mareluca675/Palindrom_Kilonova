@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cstring>
+#include <vector>
+
+using namespace std;
+
+char c[1000100]; 
+int fv[201];
+vector<char> imp;
+int impare, i, j;
+    
+int main()
+{
+    cin >> c;
+    int C = strlen(c);
+    
+    for(i = 0; i < C; i ++)
+    {
+        fv[(int)c[i]] ++;
+    }
+    
+    for(i = 65; i <= 90; i ++)
+    {
+        if(fv[i] % 2 == 1)
+        {
+            impare ++;
+        }
+    }
+    
+    if(impare > 1)
+    {
+        cout << -1;
+    }
+    else
+    {
+        for(i = 65; i <= 90; i ++)
+        {
+            for(j = 1; j <= fv[i] / 2; j ++)
+            {
+                cout << (char) i;
+            }
+            
+            if(fv[i] % 2)
+            {
+                imp.push_back(i);
+            }
+        }
+        
+        for(i = 0; i < imp.size(); i ++)
+        {
+            cout << imp[i];
+        }
+        
+        for(i = 90; i >= 65; i --)
+        {
+            for(j = 1; j <= fv[i] / 2; j ++)
+            {
+                cout << (char) i;
+            }
+        }
+    }
+    
+    return 0;
+}
